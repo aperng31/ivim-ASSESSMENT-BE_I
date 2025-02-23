@@ -1,0 +1,30 @@
+{
+  "name": "ivim-assessment-be_i",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aperng31/ivim-ASSESSMENT-BE_I.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aperng31/ivim-ASSESSMENT-BE_I/issues"
+  },
+  "homepage": "https://github.com/aperng31/ivim-ASSESSMENT-BE_I#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1",
+    "nodemon": "^3.1.9"
+  }
+}
