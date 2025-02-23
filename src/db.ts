@@ -1,8 +1,7 @@
+import mongoose from 'mongoose';
 const MONGO_URI="mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.4.0";
 
-import mongoose from 'mongoose';
-
-export const noteSchema = new mongoose.Schema(
+const noteSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
@@ -11,6 +10,8 @@ export const noteSchema = new mongoose.Schema(
     timestamps: true
   }
 );
+
+export const Note = mongoose.model('Note', noteSchema);
 
 const connectDB = async () => {
   try {
