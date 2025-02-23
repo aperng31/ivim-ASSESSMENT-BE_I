@@ -1,5 +1,5 @@
 import NotesController from './controller';
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 // Define the routes for this router
