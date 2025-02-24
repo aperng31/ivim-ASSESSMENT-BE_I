@@ -22,6 +22,13 @@ describe("Notes Route", () => {
     });
   });
 
+  beforeEach(async () => {
+    const collections = await mongoose.connection.db.collections();
+    for (const collection of collections) {
+      await collection.deleteMany({});
+    }
+  });
+
   afterAll(async () => {
     await client.disconnect();
     await server.close();
@@ -43,5 +50,16 @@ describe("Notes Route", () => {
     expect(res.status).toBe(200);
     expect(res.body.title).toBe(myNote.title);
     expect(res.body.description).toBe(myNote.description);
+  });
+
+  it("GET /notes should retrieve all notes", async () => {
+    const note1 = { title: "test hello title1", description: "Hello World Description1" };
+    const note2 = { title: "test hello title2", description: "Hello World Description2" };
+    const note3 = { title: "test hello title3", description: "Hello World Description3" };
+
+    await Note.insertMany([note1, note2, note3]);
+    const res = await supertest(app).get('/notes');
+    expect(res.status).toBe(200);
+    expect(res.body.length).toEqual(3);
   })
 });
