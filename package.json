@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "nodemon src/app.ts",
-    "start": "node src/app.ts",
-    "test": "NODE_ENV=test jest"
+    "dev": "nodemon src/server.ts",
+    "start": "node src/server.ts",
+    "test": "jest"
   },
   "repository": {
     "type": "git",

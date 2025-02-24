@@ -15,6 +15,7 @@ describe("Notes Controller", () => {
   beforeAll(async () => {
     container = await new MongoDBContainer().start();
     client = await mongoose.connect(container.getConnectionString(), { directConnection: true });
+    console.log('MongoDB connected successfully');
     server = app.listen(PORT, () => {
       console.log(`TEST ENVIRONMENT - Listening at http://localhost:${PORT}`);
     });
