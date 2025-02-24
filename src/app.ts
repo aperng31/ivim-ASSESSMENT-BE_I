@@ -1,8 +1,10 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
+import morgan from 'morgan';
 import notesRoute from './notesRoute';
 import bodyParser from 'body-parser';
 const app: Express = express();
 
+app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use('/notes', notesRoute);
 
