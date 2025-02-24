@@ -17,7 +17,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(error); // Log the error for debugging
-  res.status(500).json({ message: error.message }); // Respond with the error message
+  if (!res.statusCode) res.status(500);
+  res.json({ message: error.message }); // Respond with the error message
 });
 
 export default app;

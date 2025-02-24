@@ -61,5 +61,15 @@ describe("Notes Route", () => {
     const res = await supertest(app).get('/notes');
     expect(res.status).toBe(200);
     expect(res.body.length).toEqual(3);
-  })
+  });
+
+  it("PUT /notes/:id should update a single note by ID", async () => {
+    const note = { title: "test hello title", description: "Hello World Description" };
+    const myNote = await Note.create(note);
+    const updatedNote = { title: "UPDATED test hello title", description: "UPDATD Hello World Description" };
+    const res = await supertest(app).put(`/notes/${myNote._id}`).send(updatedNote);
+    expect(res.status).toBe(201);
+    expect(res.body.title).toBe(updatedNote.title);
+    expect(res.body.description).toBe(updatedNote.description);
+  });
 });
