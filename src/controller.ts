@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
+import { Note } from './model';
 
 class NotesController {
   getNotes = async (req: Request, res: Response) => {
-    res.send('helloworld from controller!');
+    const notes = await Note.find({});
+    res.status(200).json(notes);
   }
 
   getNoteById = async (req: Request, res: Response) => {
@@ -10,8 +12,9 @@ class NotesController {
   }
 
   createNote = async (req: Request, res: Response) => {
-    console.log(req.params.id, req.body.description);
-    res.send('create note: ' + req.body.description)
+    const { title, description } = req.body;
+    const note = await Note.create({ title, description });
+    res.status(200).json(note);
   }
 
   updateNote = async (req: Request, res: Response) => {
