@@ -14,7 +14,7 @@ class NotesController {
   createNote = async (req: Request, res: Response) => {
     const { title, description } = req.body;
     const note = await Note.create({ title, description });
-    res.status(200).json(note);
+    res.status(201).json(note);
   }
 
   updateNote = async (req: Request, res: Response) => {

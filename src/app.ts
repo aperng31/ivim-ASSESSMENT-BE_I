@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 const app: Express = express();
 const port = 3000;
 
-connectDB();
+if (process.env.NODE_ENV !== 'test') connectDB();
 
 app.use(bodyParser.json());
 app.use('/notes', notesRoute);
@@ -22,6 +22,8 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({ message: error.message }); // Respond with the error message
 });
 
-app.listen(port, () => {
-  return console.log(`Listening at http://localhost:${port}`);
+if (process.env.NODE_ENV !== 'test') app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}`);
 });
+
+export default app;
