@@ -1,6 +1,6 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import morgan from 'morgan';
-import notesRoute from './notesRoute';
+import notesRoute from './route/route';
 import bodyParser from 'body-parser';
 const app: Express = express();
 

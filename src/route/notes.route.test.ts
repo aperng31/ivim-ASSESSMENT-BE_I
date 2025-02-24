@@ -1,13 +1,13 @@
 import { MongoDBContainer, StartedMongoDBContainer } from '@testcontainers/mongodb';
-import mongoose, { HydratedDocument, Mongoose } from 'mongoose';
+import mongoose, { Mongoose } from 'mongoose';
 import supertest from 'supertest';
-import app from './app';
+import app from '../app';
 import { Server } from 'http';
-import { Note } from './model';
+import { Note } from '../model/notes.model';
 
 const PORT = 3000;
 
-describe("Notes Controller", () => {
+describe("Notes Route", () => {
   jest.setTimeout(60000);
   let container: StartedMongoDBContainer;
   let client: Mongoose;

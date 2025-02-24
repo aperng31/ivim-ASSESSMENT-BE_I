@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Note } from './model';
+import { Note } from '../model/notes.model';
 
 class NotesController {
   getNotes = async (req: Request, res: Response) => {
