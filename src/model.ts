@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 
-const noteSchema = new mongoose.Schema(
+export interface INote {
+  title: string;
+  description: string;
+};
+
+const noteSchema = new mongoose.Schema<INote>(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
@@ -10,4 +15,4 @@ const noteSchema = new mongoose.Schema(
   }
 );
 
-export const Note = mongoose.model('Note', noteSchema);
+export const Note = mongoose.model<INote>('Note', noteSchema);

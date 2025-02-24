@@ -8,7 +8,8 @@ class NotesController {
   }
 
   getNoteById = async (req: Request, res: Response) => {
-    res.send('note id: ' + req.params.id)
+    const note = await Note.findById(req.params.id);
+    res.status(200).json(note);
   }
 
   createNote = async (req: Request, res: Response) => {
