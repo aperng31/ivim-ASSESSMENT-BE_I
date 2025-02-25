@@ -4,8 +4,9 @@ const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     res.status(400)
-    next(new Error(errors.array()[0].msg));
+    return next(new Error(errors.array()[0].msg));
   }
+  next();
 };
 
 export const validateNoteId = [
@@ -14,7 +15,11 @@ export const validateNoteId = [
 ];
 
 export const validateNoteBody = [
-  body('title').exists().isString().withMessage('Missing title field').bail(),
-  body('description').exists().isString().withMessage('Missing description field').bail(),
+  body('title')
+    .exists().withMessage('Missing title field').bail()
+    .isString().withMessage('Invalid title field').bail(),
+  body('description')
+    .exists().withMessage('Missing description field').bail()
+    .isString().withMessage('Invalid description field'),
   handleValidationErrors
 ]
