@@ -1,9 +1,9 @@
 import app from "./app";
 import connectDB from "./db";
-const PORT = 3000;
+import 'dotenv/config';
 
 connectDB();
 
-app.listen(PORT, () => {
-  console.log(`Listening at http://localhost:${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Listening at http://localhost:${process.env.PORT}`);
 });
