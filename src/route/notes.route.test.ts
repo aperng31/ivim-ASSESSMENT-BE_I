@@ -43,7 +43,7 @@ describe("Notes Route", () => {
     expect(res.body.description).toBe(note.description);
   });
 
-  it("GET /note/:id should retrieve a single note by ID", async () => {
+  it("GET /notes/:id should retrieve a single note by ID", async () => {
     const note = { title: "test hello title", description: "Hello World Description" };
     const myNote = await Note.create(note);
     const res = await supertest(app).get(`/notes/${myNote._id}`);
@@ -72,4 +72,12 @@ describe("Notes Route", () => {
     expect(res.body.title).toBe(updatedNote.title);
     expect(res.body.description).toBe(updatedNote.description);
   });
+
+  it("DELETE /notes/:id should delete a single note by ID", async () => {
+    const note = { title: "test hello title", description: "Hello World Description" };
+    const myNote = await Note.create(note);
+    const res = await supertest(app).delete(`/notes/${myNote._id}`);
+    expect(res.status).toBe(200);
+    expect(res.text).toBe(`Successfully deleted note with ID: ${myNote._id}`)
+  })
 });
