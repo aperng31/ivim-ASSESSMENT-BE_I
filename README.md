@@ -1,5 +1,5 @@
 # ivim-ASSESSMENT-BE_I
-## Backend application build using Node.js, Express, and MongoDB that handles basic CRUD for notes. Tested using Jest, Supertest, and Testcontainers and containerized with Docker.
+## Backend application built using Node.js, Express, and MongoDB that handles basic CRUD for notes. Tested using Jest, Supertest, and Testcontainers and containerized with Docker.
 ### Total time spent: ~6 hours
 ## To get started
 1. Clone the repository to desired local directory
